@@ -1,8 +1,8 @@
 "use strict";
 
-var learnjs = {};
+var grads = {};
 
-learnjs.problems = [
+grads.problems = [
   {
     description: "What is truth?",
     code: "function problem() { return __; }"
@@ -13,16 +13,16 @@ learnjs.problems = [
   }
 ];
 
-learnjs.applyObject = function(obj, elem) {
+grads.applyObject = function(obj, elem) {
   for (var key in obj) {
     elem.find('[data-name="' + key + '"]').text(obj[key]);
   }
 };
 
-learnjs.problemView = function(data) {
+grads.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
   var view = $('.templates .problem-view').clone();
-  var problemData = learnjs.problems[problemNumber - 1]; 
+  var problemData = grads.problems[problemNumber - 1]; 
   var resultFlash = view.find('.result'); 
 
   function checkAnswer() { 
@@ -33,21 +33,21 @@ learnjs.problemView = function(data) {
 
   function checkAnswerClick() {
     if (checkAnswer()) {
-      var correctFlash = learnjs.template('correct-flash'); 
+      var correctFlash = grads.template('correct-flash'); 
       correctFlash.find('a').attr('href', '#problem-' + (problemNumber + 1)); 
-      learnjs.flashElement(resultFlash, correctFlash);
+      grads.flashElement(resultFlash, correctFlash);
     } else {
-      learnjs.flashElement(resultFlash, 'Incorrect!');
+      grads.flashElement(resultFlash, 'Incorrect!');
     }
     return false; 
   }
 
   view.find('.check-btn').click(checkAnswerClick); 
   view.find('.title').text('Problem #' + problemNumber);
-  learnjs.applyObject(problemData, view);
+  grads.applyObject(problemData, view);
 
-  if (problemNumber < learnjs.problems.length) {
-    var buttonItem = learnjs.template('skip-btn'); 
+  if (problemNumber < grads.problems.length) {
+    var buttonItem = grads.template('skip-btn'); 
     buttonItem.find('a').attr('href', '#problem-' + (problemNumber + 1)); $('.nav-list').append(buttonItem);
   
     view.bind('removingView', function() {
@@ -58,44 +58,44 @@ learnjs.problemView = function(data) {
   return view;
 }
 
-learnjs.showView = function(hash) {
+grads.showView = function(hash) {
   var routes = {
-    '#problem': learnjs.problemView,
-    '#': learnjs.landingView,
-    '': learnjs.landingView
+    '#problem': grads.problemView,
+    '#': grads.landingView,
+    '': grads.landingView
   };
   var hashParts = hash.split('-');
   var viewFn = routes[hashParts[0]];
   if (viewFn) {
-    learnjs.triggerEvent('removingView', []); 
+    grads.triggerEvent('removingView', []); 
     $('.view-container').empty().append(viewFn(hashParts[1]));
   }
 }
 
-learnjs.appOnReady = function() {
+grads.appOnReady = function() {
   window.onhashchange = function() {
-    learnjs.showView(window.location.hash);
+    grads.showView(window.location.hash);
   };
-  learnjs.showView(window.location.hash);
+  grads.showView(window.location.hash);
 }
 
-learnjs.flashElement = function(elem, content) { 
+grads.flashElement = function(elem, content) { 
   elem.fadeOut('fast', function() {
     elem.html(content);
     elem.fadeIn();
   });
 }
 
-learnjs.template = function(name) {
+grads.template = function(name) {
   return $('.templates .' + name).clone();
 }
 
-learnjs.buildCorrectFlash = function (problemNum) {
+grads.buildCorrectFlash = function (problemNum) {
   
-  var correctFlash = learnjs.template('correct-flash');
+  var correctFlash = grads.template('correct-flash');
   var link = correctFlash.find('a');
   
-  if (problemNum < learnjs.problems.length) {
+  if (problemNum < grads.problems.length) {
     link.attr('href', '#problem-' + (problemNum + 1));
   } else {
     link.attr('href', '');
@@ -106,9 +106,9 @@ learnjs.buildCorrectFlash = function (problemNum) {
 
 }
 
-learnjs.landingView = function() {
-  return learnjs.template('landing-view');
+grads.landingView = function() {
+  return grads.template('landing-view');
 }
 
-learnjs.triggerEvent = function(name, args) { $('.view-container>*').trigger(name, args);
+grads.triggerEvent = function(name, args) { $('.view-container>*').trigger(name, args);
 }
