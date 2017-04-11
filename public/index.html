@@ -41,40 +41,38 @@
     </style>
   </head>
 <body>
+
   <div class='markup'>
-    <div class='nav-container no-select fixed-top u-full-width'>
-      <ul class='inline-list hover-links nav-list six columns'>
-        <li><a class='text-lg' href="#">Home</a></li>
-        <li><a href="#problem-1">Locations</a></li> </ul>
-    </div>
+      <div class='nav-container no-select fixed-top u-full-width'>
+        <ul class='inline-list hover-links nav-list six columns'>
+          <li><a class='text-lg' href="#">Home</a></li>
+          <li><a href="#dataTableView">Data</a></li> </ul>
+      </div>
     <div class='view-container container'></div>
   </div>
+
   <div class='templates'>
-    <li class='skip-btn'> <a>Skip This Problem</a></li>
+
     <div class='landing-view'>
-        <div class='row'>
-          <div class='one-half column'>
-            <h3>Explore US graduation rates</h3>
-            <a href='#problem-1' class='button button-primary'>Start Now!</a>
-          </div>
-         </div>
+      <div class='row'>
+        <div class='one-half column'>
+          <h3>Explore US graduation rates</h3>
+          <a href='#dataTableView' class='button button-primary'>View Data</a>
         </div>
-    <div class='correct-flash'>
-      <span>Correct!</span> <a>Next Problem</a>
+      </div>
     </div>
-    <div class='problem-view'>
-      <h3 class='title'></h3>
+
+    <div class='dataTableView'>
+      <h3 class='title'>Data Table</h3>
       <p data-name='description'></p>
       <pre><code data-name='code'></code></pre> 
-      <form>
-        <textarea class='u-full-width answer'></textarea> <div>
-        <button class='button-primary check-btn'>Check Answer</button>
-        <p class='result'></p> </div>
-      </form>
     </div>
+
   </div>
+
   <script type='text/javascript'>
     $(window).ready(grads.appOnReady);
   </script>
+
 </body>
 </html>
