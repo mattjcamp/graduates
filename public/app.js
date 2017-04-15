@@ -7,6 +7,15 @@ grads.overviewView = function(data) {
   return view;
 }
 
+grads.show_data_table = function() {
+
+  var data_table = WCL_Data_Table();
+
+  d3.csv("data/grads_us.csv", function(data) {
+    data_table(d3.select("#datatable").datum(data));
+  });
+}
+
 grads.show_table = function() {
   var vlSpec = {
     "data": {
@@ -51,8 +60,11 @@ grads.showView = function(hash) {
     $('.view-container').empty().append(viewFn(hashParts[1]));
   }
   console.log(hashParts[0]);
-  if (hashParts[0] == "#overviewView")
+  if (hashParts[0] == "#overviewView"){
     grads.show_table();
+    //grads.show_data_table();
+  }
+
 }
 
 grads.appOnReady = function() {
