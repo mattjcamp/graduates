@@ -7,6 +7,10 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
     <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.0-beta.28/vega.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.0-alpha.9/vega-lite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-beta.10/vega-embed.js"></script>
     <script src='/vendor.js'></script>
     <script src='/app.js'></script>
 
@@ -46,7 +50,7 @@
       <div class='nav-container no-select fixed-top u-full-width'>
         <ul class='inline-list hover-links nav-list six columns'>
           <li><a class='text-lg' href="#">Home</a></li>
-          <li><a href="#dataTableView">Data</a></li> </ul>
+          <li><a href="#overviewView">Over View</a></li> </ul>
       </div>
     <div class='view-container container'></div>
   </div>
@@ -57,15 +61,15 @@
       <div class='row'>
         <div class='one-half column'>
           <h3>Explore US graduation rates</h3>
-          <a href='#dataTableView' class='button button-primary'>View Data</a>
+          <a href='#overviewView' class='button button-primary'>View Data</a>
         </div>
       </div>
     </div>
 
-    <div class='dataTableView'>
-      <h3 class='title'>Data Table</h3>
-      <p data-name='description'></p>
-      <pre><code data-name='code'></code></pre> 
+    <div class='overviewView' onselect="grads.show_table()">
+      <h3 class='title'>32 Year Enrollment Trend</h3>
+
+      <div id="vis"></div>
     </div>
 
   </div>
