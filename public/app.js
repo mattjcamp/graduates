@@ -21,18 +21,26 @@ grads.show_table = function() {
     "data": {
         "url": "data/grads_us.csv"
       },
+    "transform": [
+        {"calculate": "datum.year", "as": "ay"},
+        {"filter": "datum.ay < 2011"}],
       "width": 400,
       "mark": "line",
       "encoding": {
           "x": {
           "timeUnit": "year",
-          "field": "year"
+          "field": "ay",
+          "axis": {
+            "ticks":true,
+            "tickCount":10
+            },
           },
           "y": {
           "aggregate": "sum",
           "field": "n"
-          }
+        }
       }
+
   };
   var opt = {
     "mode": "vega-lite",
