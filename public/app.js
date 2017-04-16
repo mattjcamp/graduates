@@ -23,7 +23,7 @@ grads.show_table = function() {
       },
     "transform": [
         {"calculate": "datum.year", "as": "ay"},
-        {"filter": "datum.ay < 2011"}],
+        {"filter": "datum.ay < 2012"}],
       "width": 400,
       "mark": "line",
       "encoding": {
